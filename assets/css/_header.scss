@@ -73,7 +73,20 @@
     justify-content: flex-end;
   }
 
+  &__item {
+    position: relative;
+
+    &--has-dropdown:hover .site-nav__dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+
   &__link {
+    display: flex;
+    align-items: center;
+    gap: $space-1;
     font-family: $font-sans;
     font-size: $text-sm;
     font-weight: $font-medium;
@@ -92,6 +105,86 @@
     &.active {
       color: $color-accent;
     }
+  }
+
+  &__chevron {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    transition: transform $transition-fast;
+  }
+
+  &__item--has-dropdown:hover &__chevron {
+    transform: rotate(180deg);
+  }
+
+  // Dropdown panel
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + $space-2);
+    left: 50%;
+    transform: translateX(-50%) translateY(-4px);
+    min-width: 160px;
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-lg;
+    padding: $space-2;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity $transition-fast, transform $transition-fast, visibility $transition-fast;
+    z-index: 200;
+
+    // pointer bridge so hover doesn't break when moving from link to dropdown
+    &::before {
+      content: "";
+      position: absolute;
+      top: -$space-2;
+      left: 0;
+      right: 0;
+      height: $space-2;
+    }
+  }
+
+  &__dropdown-sep {
+    height: 1px;
+    background: $color-border;
+    margin: $space-1 $space-2;
+  }
+
+  &__dropdown-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: $color-border-hover;
+  }
+
+  &__dropdown-link {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-family: $font-sans;
+    font-size: $text-sm;
+    color: $color-text-secondary;
+    padding: $space-2 $space-3;
+    border-radius: $radius-md;
+    transition: background $transition-fast, color $transition-fast;
+    white-space: nowrap;
+
+    &:hover,
+    &.active {
+      background: $color-background;
+      color: $color-text-primary;
+    }
+
+    &.active { color: $color-accent; }
+
+    &--kernel   .site-nav__dropdown-dot { background: $color-kernel; }
+    &--backend  .site-nav__dropdown-dot { background: $color-backend; }
+    &--networking .site-nav__dropdown-dot { background: $color-networking; }
+    &--systems  .site-nav__dropdown-dot { background: $color-systems; }
+    &--devtools .site-nav__dropdown-dot { background: $color-devtools; }
   }
 }
 
@@ -140,10 +233,34 @@
     &__list {
       flex-direction: column;
       align-items: flex-start;
-      gap: $space-2;
+      gap: $space-1;
     }
 
+    &__item { width: 100%; }
+
     &__link {
+      display: flex;
+      width: 100%;
+    }
+
+    &__chevron { display: none; }
+
+    // Dropdown always visible on mobile (flat list)
+    &__dropdown {
+      position: static;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      box-shadow: none;
+      border: none;
+      border-left: 2px solid $color-border;
+      border-radius: 0;
+      padding: $space-1 0 $space-1 $space-3;
+      margin-left: $space-3;
+      min-width: unset;
+    }
+
+    &__dropdown-link {
       display: block;
       width: 100%;
     }

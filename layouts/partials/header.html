@@ -19,12 +19,47 @@
       <nav class="site-nav" aria-label="Primary navigation">
         <ul class="site-nav__list">
           {{- range .Site.Menus.main }}
-            <li>
-              <a href="{{ .URL | absURL }}"
-                 class="site-nav__link{{ if or (eq $.RelPermalink .URL) (hasPrefix $.RelPermalink .URL) }} active{{ end }}">
-                {{ .Name }}
-              </a>
-            </li>
+            {{- if not .Parent }}
+              {{- $children := .Children }}
+              {{- if $children }}
+                <li class="site-nav__item site-nav__item--has-dropdown">
+                  <a href="{{ .URL | absURL }}"
+                     class="site-nav__link{{ if hasPrefix $.RelPermalink .URL }} active{{ end }}">
+                    {{ .Name }}
+                    <svg class="site-nav__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/>
+                    </svg>
+                  </a>
+                  <ul class="site-nav__dropdown" aria-label="{{ .Name }} submenu">
+                    {{- range $children }}
+                      {{- if .Params.color }}
+                        <li>
+                          <a href="{{ .URL | absURL }}"
+                             class="site-nav__dropdown-link site-nav__dropdown-link--{{ .Params.color }}{{ if or (eq $.RelPermalink .URL) (hasPrefix $.RelPermalink .URL) }} active{{ end }}">
+                            <span class="site-nav__dropdown-dot"></span>{{ .Name }}
+                          </a>
+                        </li>
+                      {{- else }}
+                        <li>
+                          <a href="{{ .URL | absURL }}"
+                             class="site-nav__dropdown-link{{ if or (eq $.RelPermalink .URL) (hasPrefix $.RelPermalink .URL) }} active{{ end }}">
+                            {{ .Name }}
+                          </a>
+                        </li>
+                        <li class="site-nav__dropdown-sep" role="separator"></li>
+                      {{- end }}
+                    {{- end }}
+                  </ul>
+                </li>
+              {{- else }}
+                <li class="site-nav__item">
+                  <a href="{{ .URL | absURL }}"
+                     class="site-nav__link{{ if or (eq $.RelPermalink .URL) (hasPrefix $.RelPermalink .URL) }} active{{ end }}">
+                    {{ .Name }}
+                  </a>
+                </li>
+              {{- end }}
+            {{- end }}
           {{- end }}
         </ul>
       </nav>
