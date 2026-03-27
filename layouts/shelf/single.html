@@ -1,0 +1,55 @@
+{{ define "main" }}
+
+<header class="paper-header band band--hero">
+  <div class="prose-container">
+
+    <div class="paper-header__meta">
+      {{- with .Params.year }}
+        <span class="paper-header__year">{{ . }}</span>
+      {{- end }}
+      {{- with .Params.authors }}
+        <span class="paper-header__authors">{{ delimit . ", " }}</span>
+      {{- end }}
+    </div>
+
+    <h1 class="paper-header__title">{{ .Title }}</h1>
+
+    {{- with .Params.summary }}
+      <p class="paper-header__summary">{{ . }}</p>
+    {{- end }}
+
+    <div class="paper-header__links">
+      {{- with .Params.paperURL }}
+        <a href="{{ . }}" class="paper-header__btn paper-header__btn--primary" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          Read Paper
+        </a>
+      {{- end }}
+      {{- with .Params.relatedPost }}
+        <a href="{{ . | relURL }}" class="paper-header__btn paper-header__btn--secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Related Post
+        </a>
+      {{- end }}
+    </div>
+
+    {{- with .Params.tags }}
+      <div class="post-tags" style="margin-top:1.5rem;">
+        {{- range . }}
+          <a href="{{ printf "/tags/%s/" (. | urlize) | relURL }}" class="tag-pill">{{ . }}</a>
+        {{- end }}
+      </div>
+    {{- end }}
+
+  </div>
+</header>
+
+<div class="band band--white">
+  <div class="prose-container">
+    <div class="post-content">
+      {{ .Content }}
+    </div>
+  </div>
+</div>
+
+{{ end }}

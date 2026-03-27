@@ -1,0 +1,56 @@
+{{ define "main" }}
+<div class="band band--white" style="padding-bottom: 4rem;">
+  <div class="site-container">
+
+    <header class="page-header">
+      <h1 class="page-header__title">{{ .Title }}</h1>
+      <p class="page-header__desc">A running record of published posts, papers read, and notes.</p>
+    </header>
+
+    {{- $sections := slice "posts" "shelf" "logs" }}
+    {{- $pages := where .Site.RegularPages "Section" "in" $sections }}
+    {{- $sorted := $pages.ByDate.Reverse }}
+
+    <div class="log-table">
+      {{- range $sorted }}
+        {{- $section := .Section }}
+        {{- $type := "note" }}
+        {{- if eq $section "posts" }}{{ $type = "published" }}{{ end }}
+        {{- if eq $section "shelf" }}{{ $type = "reading" }}{{ end }}
+        {{- if eq $section "logs" }}{{ $type = (.Params.logType | default "note") }}{{ end }}
+        <div class="log-row">
+          <time class="log-row__date" datetime="{{ .Date.Format "2006-01-02" }}">
+            {{ .Date.Format "2006-01-02" }}
+          </time>
+          <span class="log-type-badge log-type-badge--{{ $type }}">{{ $type }}</span>
+          <div class="log-row__body">
+            <a href="{{ .RelPermalink }}" class="log-row__title">{{ .Title }}</a>
+            {{- if eq $section "posts" }}
+              <span class="log-row__trace">
+                {{- $cat := path.Base .CurrentSection.RelPermalink }}
+                <span>{{ $cat }}</span>
+                {{- range first 2 .Params.tags }}
+                  <span class="log-row__trace-sep">→</span>{{ . }}
+                {{- end }}
+              </span>
+            {{- else if eq $section "shelf" }}
+              <span class="log-row__trace">
+                {{- with .Params.authors }}<span>{{ index . 0 }}</span>{{- end }}
+                {{- with .Params.year }}<span class="log-row__trace-sep">·</span><span>{{ . }}</span>{{- end }}
+              </span>
+            {{- else if .Params.trace }}
+              <span class="log-row__trace">
+                {{- range $i, $t := .Params.trace }}
+                  {{- if $i }}<span class="log-row__trace-sep">→</span>{{ end }}{{ $t }}
+                {{- end }}
+              </span>
+            {{- end }}
+          </div>
+          <a href="{{ .RelPermalink }}" class="log-row__link" aria-label="View">↗</a>
+        </div>
+      {{- end }}
+    </div>
+
+  </div>
+</div>
+{{ end }}
