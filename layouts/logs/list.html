@@ -1,0 +1,41 @@
+{{ define "main" }}
+<div class="band band--white" style="padding-bottom: 4rem;">
+  <div class="site-container">
+
+    <header class="page-header">
+      <h1 class="page-header__title">{{ .Title }}</h1>
+      <p class="page-header__desc">A running record of published posts, papers read, and notes.</p>
+    </header>
+
+    <div class="log-table">
+      {{- range .Pages.ByDate.Reverse }}
+        {{- $type := .Params.logType | default "note" }}
+        <div class="log-row">
+          <time class="log-row__date" datetime="{{ .Date.Format "2006-01-02" }}">
+            {{ .Date.Format "2006-01-02" }}
+          </time>
+          <span class="log-type-badge log-type-badge--{{ $type }}">{{ $type }}</span>
+          <div class="log-row__body">
+            {{- if .Params.link }}
+              <a href="{{ .Params.link | relURL }}" class="log-row__title">{{ .Title }}</a>
+            {{- else }}
+              <span class="log-row__title">{{ .Title }}</span>
+            {{- end }}
+            {{- with .Params.trace }}
+              <span class="log-row__trace">
+                {{- range $i, $t := . }}
+                  {{- if $i }}<span class="log-row__trace-sep">→</span>{{ end }}{{ $t }}
+                {{- end }}
+              </span>
+            {{- end }}
+          </div>
+          {{- with .Params.link }}
+            <a href="{{ . | relURL }}" class="log-row__link" aria-label="View">↗</a>
+          {{- end }}
+        </div>
+      {{- end }}
+    </div>
+
+  </div>
+</div>
+{{ end }}

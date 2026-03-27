@@ -1,0 +1,42 @@
+{{ define "main" }}
+<div class="band band--white" style="padding-bottom: 4rem;">
+  <div class="site-container">
+
+    <header class="page-header">
+      <h1 class="page-header__title">{{ .Title }}</h1>
+      <p class="page-header__desc">Research papers I've read — summaries, notes, and related posts.</p>
+    </header>
+
+    <div class="shelf-list">
+      {{- range .Pages.ByDate.Reverse }}
+        <div class="shelf-row">
+          <div class="shelf-row__meta">
+            {{- with .Params.year }}
+              <span class="shelf-row__year">{{ . }}</span>
+            {{- end }}
+            <span class="shelf-row__authors">{{ delimit .Params.authors ", " | default "—" }}</span>
+          </div>
+
+          <a href="{{ .RelPermalink }}" class="shelf-row__title">{{ .Title }}</a>
+
+          <div class="shelf-row__tags">
+            {{- range first 2 .Params.tags }}
+              <span class="shelf-row__tag">{{ . }}</span>
+            {{- end }}
+          </div>
+
+          <div class="shelf-row__links">
+            {{- with .Params.paperURL }}
+              <a href="{{ . }}" class="shelf-row__link" target="_blank" rel="noopener" title="Read paper">paper ↗</a>
+            {{- end }}
+            {{- with .Params.relatedPost }}
+              <a href="{{ . | relURL }}" class="shelf-row__link shelf-row__link--post" title="My post">post →</a>
+            {{- end }}
+          </div>
+        </div>
+      {{- end }}
+    </div>
+
+  </div>
+</div>
+{{ end }}

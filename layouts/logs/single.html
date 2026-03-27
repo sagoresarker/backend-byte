@@ -1,0 +1,45 @@
+{{ define "main" }}
+<div class="band band--white">
+  <div class="prose-container">
+    <div class="log-single">
+
+      <div class="log-single__header">
+        <time class="log-single__date" datetime="{{ .Date.Format "2006-01-02" }}">
+          {{ .Date.Format "January 2, 2006" }}
+        </time>
+        {{- with .Params.logType }}
+          <span class="log-type-badge log-type-badge--{{ . }}">{{ . }}</span>
+        {{- end }}
+      </div>
+
+      <h1 class="log-single__title">{{ .Title }}</h1>
+
+      {{- with .Params.description }}
+        <p class="log-single__desc">{{ . }}</p>
+      {{- end }}
+
+      {{- with .Params.trace }}
+        <div class="log-single__trace">
+          <p class="log-single__trace-label">Trace</p>
+          <div class="log-single__trace-items">
+            {{- range . }}
+              <span class="log-single__trace-item">{{ . }}</span>
+            {{- end }}
+          </div>
+        </div>
+      {{- end }}
+
+      {{- with .Params.link }}
+        <a href="{{ . | relURL }}" class="paper-header__btn paper-header__btn--primary" style="margin-top:1rem;display:inline-flex;">
+          View →
+        </a>
+      {{- end }}
+
+      {{- with .Content }}
+        <div class="post-content" style="margin-top:2rem;">{{ . }}</div>
+      {{- end }}
+
+    </div>
+  </div>
+</div>
+{{ end }}
