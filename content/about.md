@@ -1,5 +1,6 @@
 ---
 title: "About"
+type: "about"
 role: "Backend Engineer"
 tagline: "Linux kernel internals · backend engineering · systems programming"
 github: "https://github.com/sagoresarker"
