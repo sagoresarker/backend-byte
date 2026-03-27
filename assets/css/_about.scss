@@ -1,0 +1,140 @@
+// ============================================================
+// About page
+// ============================================================
+
+.about-header {
+  padding-block: $space-16 $space-12;
+
+  &__inner {
+    max-width: $prose-max-width;
+  }
+
+  &__greeting {
+    font-family: $font-mono;
+    font-size: $text-sm;
+    color: $color-accent;
+    font-weight: $font-medium;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: $space-2;
+  }
+
+  &__name {
+    font-family: $font-sans;
+    font-size: $text-5xl;
+    font-weight: $font-bold;
+    color: $color-text-primary;
+    letter-spacing: -0.03em;
+    line-height: $leading-tight;
+    margin-bottom: $space-3;
+
+    @media (max-width: $bp-md) { font-size: $text-4xl; }
+    @media (max-width: $bp-sm) { font-size: $text-3xl; }
+  }
+
+  &__role {
+    font-family: $font-sans;
+    font-size: $text-xl;
+    font-weight: $font-semibold;
+    color: $color-text-secondary;
+    margin-bottom: $space-2;
+  }
+
+  &__tagline {
+    font-family: $font-mono;
+    font-size: $text-sm;
+    color: $color-text-muted;
+    margin-bottom: $space-8;
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    flex-wrap: wrap;
+  }
+}
+
+// Social / profile link buttons
+.about-link {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  font-family: $font-sans;
+  font-size: $text-sm;
+  font-weight: $font-medium;
+  padding: $space-2 $space-4;
+  border-radius: $radius-md;
+  border: 1px solid $color-border;
+  background: $color-surface;
+  color: $color-text-secondary;
+  transition: background $transition-fast, color $transition-fast, border-color $transition-fast;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    color: $color-text-primary;
+    border-color: $color-border-hover;
+    background: $color-background;
+  }
+
+  &--github:hover  { color: #24292f; }
+  &--linkedin:hover { color: #0A66C2; border-color: #0A66C2; }
+  &--portfolio:hover { color: $color-accent; border-color: $color-accent; }
+}
+
+// Prose content area
+.about-content {
+  padding-top: $space-10;
+
+  h2 {
+    font-family: $font-sans;
+    font-size: $text-xl;
+    font-weight: $font-semibold;
+    color: $color-text-primary;
+    margin-top: $space-10;
+    margin-bottom: $space-4;
+    padding-bottom: $space-3;
+    border-bottom: 1px solid $color-border;
+
+    &:first-child { margin-top: 0; }
+  }
+
+  p {
+    font-family: $font-sans;
+    font-size: $text-base;
+    color: $color-text-secondary;
+    line-height: $leading-relaxed;
+    margin-bottom: $space-4;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 $space-6;
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  li {
+    font-family: $font-sans;
+    font-size: $text-sm;
+    color: $color-text-secondary;
+    line-height: $leading-relaxed;
+    padding: $space-3 $space-4;
+    background: $color-background;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    border-left: 3px solid $color-border-hover;
+
+    strong {
+      color: $color-text-primary;
+      font-weight: $font-semibold;
+    }
+  }
+}

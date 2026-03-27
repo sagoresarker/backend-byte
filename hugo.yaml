@@ -51,30 +51,53 @@ outputs:
 
 menus:
   main:
-    - name: "All Posts"
+    - name: "Posts"
       url: "/posts/"
       weight: 10
+      identifier: "posts"
+    - name: "All Posts"
+      url: "/posts/"
+      weight: 11
+      parent: "posts"
     - name: "Kernel"
       url: "/posts/kernel/"
       weight: 20
+      parent: "posts"
+      params:
+        color: "kernel"
     - name: "Backend"
       url: "/posts/backend/"
       weight: 30
+      parent: "posts"
+      params:
+        color: "backend"
     - name: "Networking"
       url: "/posts/networking/"
       weight: 40
+      parent: "posts"
+      params:
+        color: "networking"
     - name: "Systems"
       url: "/posts/systems/"
       weight: 50
+      parent: "posts"
+      params:
+        color: "systems"
     - name: "DevTools"
       url: "/posts/devtools/"
       weight: 60
+      parent: "posts"
+      params:
+        color: "devtools"
     - name: "Shelf"
       url: "/shelf/"
       weight: 70
     - name: "Logs"
       url: "/logs/"
       weight: 80
+    - name: "About"
+      url: "/about/"
+      weight: 90
 
 params:
   author: "Sagore Sarker"
