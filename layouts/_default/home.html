@@ -1,0 +1,53 @@
+{{ define "main" }}
+
+<!-- Hero -->
+<section class="band band--hero hero">
+  <div class="site-container">
+    <div class="hero__content">
+      <span class="hero__eyebrow">Technical Writing</span>
+      <h1 class="hero__title">Deep dives into Linux, systems &amp; backend engineering.</h1>
+      <p class="hero__subtitle">Long-form articles on kernel internals, distributed systems, networking protocols, and the infrastructure behind modern software.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Recent Posts -->
+<section class="band band--white posts-section">
+  <div class="site-container">
+    <div class="section-header">
+      <h2 class="section-header__title">Recent Posts</h2>
+      <a href="{{ "/posts/" | relURL }}" class="section-header__link">View all posts →</a>
+    </div>
+
+    <div class="post-grid">
+      {{- $posts := where .Site.RegularPages "Type" "posts" }}
+      {{- range first (.Site.Params.postsPerHomePage | default 9) ($posts.ByDate.Reverse) }}
+        {{ partial "post-card.html" . }}
+      {{- end }}
+    </div>
+  </div>
+</section>
+
+<!-- Browse by Category -->
+<section class="band band--muted categories-section">
+  <div class="site-container">
+    <div class="section-header">
+      <h2 class="section-header__title">Browse by Category</h2>
+    </div>
+
+    <div class="category-grid">
+      {{- range .Site.Sections }}
+        {{- if eq .Section "posts" }}
+          {{- range .Sections }}
+            <a href="{{ .RelPermalink }}" class="category-card">
+              <span class="category-card__name">{{ .Title }}</span>
+              <span class="category-card__count">{{ len .RegularPagesRecursive }} posts</span>
+            </a>
+          {{- end }}
+        {{- end }}
+      {{- end }}
+    </div>
+  </div>
+</section>
+
+{{ end }}

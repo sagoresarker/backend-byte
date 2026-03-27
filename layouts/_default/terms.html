@@ -1,0 +1,19 @@
+{{ define "main" }}
+<div class="band band--white">
+  <div class="site-container">
+
+    <header class="page-header">
+      <h1 class="page-header__title">{{ .Title }}</h1>
+    </header>
+
+    <div class="tag-cloud" style="padding:0 0 4rem;">
+      {{- range .Data.Terms.ByCount }}
+        <a href="{{ .Page.RelPermalink }}" class="tag-pill">
+          {{ .Page.Title }} <span style="opacity:0.6;">({{ .Count }})</span>
+        </a>
+      {{- end }}
+    </div>
+
+  </div>
+</div>
+{{ end }}

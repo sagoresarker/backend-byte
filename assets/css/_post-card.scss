@@ -1,0 +1,265 @@
+// Post grid for homepage
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-6;
+
+  @media (max-width: $bp-lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $bp-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Category grid on homepage
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: $space-4;
+
+  @media (max-width: $bp-lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: $bp-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  padding: $space-5;
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    border-color: $color-accent;
+    box-shadow: $shadow-md;
+  }
+
+  &__name {
+    font-family: $font-sans;
+    font-size: $text-base;
+    font-weight: $font-semibold;
+    color: $color-text-primary;
+    text-transform: capitalize;
+  }
+
+  &__count {
+    font-family: $font-sans;
+    font-size: $text-sm;
+    color: $color-text-muted;
+  }
+}
+
+// Post card
+.post-card {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  padding: $space-6;
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+  height: 100%;
+
+  &:hover {
+    border-color: $color-border-hover;
+    box-shadow: $shadow-md;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    flex-wrap: wrap;
+  }
+
+  &__title {
+    font-family: $font-sans;
+    font-size: $text-lg;
+    font-weight: $font-semibold;
+    color: $color-text-primary;
+    line-height: $leading-snug;
+    letter-spacing: -0.01em;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+
+  &__desc {
+    font-family: $font-sans;
+    font-size: $text-sm;
+    color: $color-text-secondary;
+    line-height: $leading-relaxed;
+    flex: 1;
+
+    // Clamp to 3 lines
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-3;
+    margin-top: auto;
+    padding-top: $space-4;
+    border-top: 1px solid $color-border;
+  }
+
+  &__date {
+    font-family: $font-sans;
+    font-size: $text-xs;
+    color: $color-text-muted;
+  }
+
+  &__reading-time {
+    font-family: $font-sans;
+    font-size: $text-xs;
+    color: $color-text-muted;
+  }
+}
+
+// Post list (for /posts/ listing page)
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  &__item {
+    // wrapper li
+  }
+}
+
+.post-list-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: $space-4;
+  align-items: start;
+  padding: $space-6;
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    border-color: $color-border-hover;
+    box-shadow: $shadow-sm;
+  }
+
+  @media (max-width: $bp-sm) {
+    grid-template-columns: 1fr;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    flex-wrap: wrap;
+  }
+
+  &__title {
+    font-family: $font-sans;
+    font-size: $text-xl;
+    font-weight: $font-semibold;
+    color: $color-text-primary;
+    line-height: $leading-snug;
+    letter-spacing: -0.01em;
+    transition: color $transition-fast;
+
+    a:hover & {
+      color: $color-accent;
+    }
+  }
+
+  &__desc {
+    font-family: $font-sans;
+    font-size: $text-base;
+    color: $color-text-secondary;
+    line-height: $leading-relaxed;
+    max-width: 70ch;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+    margin-top: $space-2;
+    flex-wrap: wrap;
+  }
+
+  &__date {
+    font-family: $font-sans;
+    font-size: $text-sm;
+    color: $color-text-muted;
+  }
+
+  &__reading-time {
+    font-family: $font-sans;
+    font-size: $text-sm;
+    color: $color-text-muted;
+  }
+
+  &__side {
+    text-align: right;
+    flex-shrink: 0;
+  }
+}
+
+// Category badge / pill
+.cat-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: $font-sans;
+  font-size: $text-xs;
+  font-weight: $font-semibold;
+  padding: 2px $space-3;
+  border-radius: $radius-full;
+  text-transform: capitalize;
+  letter-spacing: 0.02em;
+
+  &--kernel     { color: $color-kernel;     background: $color-kernel-light; }
+  &--backend    { color: $color-backend;    background: $color-backend-light; }
+  &--networking { color: $color-networking; background: $color-networking-light; }
+  &--systems    { color: $color-systems;    background: $color-systems-light; }
+  &--devtools   { color: $color-devtools;   background: $color-devtools-light; }
+}
+
+// Tag pill
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  font-family: $font-sans;
+  font-size: $text-xs;
+  font-weight: $font-medium;
+  color: $color-text-secondary;
+  background: $color-background;
+  border: 1px solid $color-border;
+  padding: 2px $space-3;
+  border-radius: $radius-full;
+  transition: border-color $transition-fast, color $transition-fast;
+
+  &:hover {
+    border-color: $color-accent;
+    color: $color-accent;
+  }
+}

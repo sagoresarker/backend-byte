@@ -1,0 +1,31 @@
+// Syntax highlighting language label
+.highlight {
+  position: relative;
+
+  &[data-lang]::before {
+    content: attr(data-lang);
+    position: absolute;
+    top: $space-3;
+    right: $space-4;
+    font-family: $font-mono;
+    font-size: $text-xs;
+    color: #64748B;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    z-index: 1;
+  }
+}
+
+// Chroma (Hugo's syntax highlighter) — github light theme overrides
+.chroma {
+  background: #f6f8fa !important;
+  color: #24292e;
+}
+
+.chroma .err { color: #b31d28; background-color: #ffeef0; }
+.chroma .hl  { background-color: #fffbdd; display: block; width: 100%; }
+
+// Inline code copy hint
+code {
+  position: relative;
+}

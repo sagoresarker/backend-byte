@@ -1,0 +1,35 @@
+{{- $readingTime := math.Round (div (countwords .Content) 200.0) -}}
+{{- if lt $readingTime 1 }}{{- $readingTime = 1 }}{{- end -}}
+<article class="post-list-card">
+  <div class="post-list-card__body">
+    <div class="post-list-card__meta">
+      {{- with .Section }}
+        <a href="{{ printf "/posts/%s/" . | relURL }}" class="cat-badge cat-badge--{{ . }}">{{ . | title }}</a>
+      {{- end }}
+    </div>
+
+    <a href="{{ .RelPermalink }}">
+      <h2 class="post-list-card__title">{{ .Title }}</h2>
+    </a>
+
+    {{- with .Description }}
+      <p class="post-list-card__desc">{{ . }}</p>
+    {{- else with .Summary }}
+      <p class="post-list-card__desc">{{ . | plainify | truncate 200 }}</p>
+    {{- end }}
+
+    <div class="post-list-card__footer">
+      <time class="post-list-card__date" datetime="{{ .Date.Format "2006-01-02" }}">
+        {{ .Date.Format "January 2, 2006" }}
+      </time>
+      {{- if $.Site.Params.showReadingTime }}
+        <span class="post-list-card__reading-time">{{ $readingTime }} min read</span>
+      {{- end }}
+      {{- with .Params.tags }}
+        {{- range first 3 . }}
+          <a href="{{ printf "/tags/%s/" (. | urlize) | relURL }}" class="tag-pill">{{ . }}</a>
+        {{- end }}
+      {{- end }}
+    </div>
+  </div>
+</article>

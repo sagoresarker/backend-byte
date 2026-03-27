@@ -1,0 +1,44 @@
+// Utility classes
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// Show/hide at breakpoints
+.hide-mobile {
+  @media (max-width: $bp-md) {
+    display: none !important;
+  }
+}
+
+.show-mobile {
+  @media (min-width: $bp-md) {
+    display: none !important;
+  }
+}
+
+// Focus ring for accessibility
+:focus-visible {
+  outline: 2px solid $color-accent;
+  outline-offset: 2px;
+}
+
+// Smooth transitions for interactive elements
+a, button {
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: 150ms;
+  transition-timing-function: ease;
+}
+
+// Selection color
+::selection {
+  background: rgba($color-accent, 0.15);
+  color: $color-text-primary;
+}

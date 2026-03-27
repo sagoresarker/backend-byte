@@ -1,0 +1,111 @@
+// ============================================================
+// Colors
+// ============================================================
+
+// Base
+$color-background:      #F8F9FA;
+$color-surface:         #FFFFFF;
+$color-border:          #E2E8F0;
+$color-border-hover:    #CBD5E1;
+
+// Text
+$color-text-primary:    #0F172A;
+$color-text-secondary:  #475569;
+$color-text-muted:      #94A3B8;
+
+// Accent
+$color-accent:          #0F5B8C;
+$color-accent-hover:    #0C4A73;
+$color-accent-light:    #EBF4FB;
+
+// Category badge colors
+$color-kernel:          #7C3AED;
+$color-kernel-light:    #F5F3FF;
+$color-backend:         #0891B2;
+$color-backend-light:   #ECFEFF;
+$color-networking:      #059669;
+$color-networking-light:#ECFDF5;
+$color-systems:         #DC2626;
+$color-systems-light:   #FEF2F2;
+$color-devtools:        #D97706;
+$color-devtools-light:  #FFFBEB;
+
+// Semantic
+$color-header-bg:       #FFFFFF;
+$color-header-border:   #E2E8F0;
+$color-footer-bg:       #F1F5F9;
+$color-hero-bg:         #F1F5F9;
+
+// ============================================================
+// Typography
+// ============================================================
+
+$font-sans:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$font-serif:   'Source Serif 4', Georgia, 'Times New Roman', serif;
+$font-mono:    'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+
+// Sizes
+$text-xs:     0.75rem;
+$text-sm:     0.875rem;
+$text-base:   1rem;
+$text-lg:     1.125rem;
+$text-xl:     1.25rem;
+$text-2xl:    1.5rem;
+$text-3xl:    1.875rem;
+$text-4xl:    2.25rem;
+$text-5xl:    3rem;
+
+// Line heights
+$leading-tight:   1.25;
+$leading-snug:    1.375;
+$leading-normal:  1.5;
+$leading-relaxed: 1.7;
+
+// Weights
+$font-normal:   400;
+$font-medium:   500;
+$font-semibold: 600;
+$font-bold:     700;
+
+// ============================================================
+// Layout
+// ============================================================
+
+$content-max-width: 1200px;
+$prose-max-width:    720px;
+$header-height:      64px;
+
+// Spacing scale
+$space-1:  0.25rem;
+$space-2:  0.5rem;
+$space-3:  0.75rem;
+$space-4:  1rem;
+$space-5:  1.25rem;
+$space-6:  1.5rem;
+$space-8:  2rem;
+$space-10: 2.5rem;
+$space-12: 3rem;
+$space-16: 4rem;
+$space-20: 5rem;
+$space-24: 6rem;
+
+// Breakpoints
+$bp-sm:  640px;
+$bp-md:  768px;
+$bp-lg:  1024px;
+$bp-xl:  1280px;
+
+// Radius
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-full: 9999px;
+
+// Shadows
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+
+// Transitions
+$transition-fast:   150ms ease;
+$transition-normal: 250ms ease;

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en" }}">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+
+  <div class="site-wrapper">
+    {{ partial "header.html" . }}
+
+    <main class="site-main" id="main-content">
+      {{- block "main" . }}{{- end }}
+    </main>
+
+    {{ partial "footer.html" . }}
+  </div>
+
+  {{- block "scripts" . }}{{- end }}
+</body>
+</html>

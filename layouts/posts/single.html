@@ -1,0 +1,90 @@
+{{ define "main" }}
+{{- $readingTime := math.Round (div (countwords .Content) 200.0) -}}
+{{- if lt $readingTime 1 }}{{- $readingTime = 1 }}{{- end -}}
+
+<!-- Post header -->
+<header class="post-header band band--hero">
+  <div class="prose-container">
+
+    <div class="post-header__meta">
+      {{- with .Section }}
+        <a href="{{ printf "/posts/%s/" . | relURL }}" class="cat-badge cat-badge--{{ . }}">{{ . | title }}</a>
+      {{- end }}
+      {{- if $.Site.Params.showReadingTime }}
+        <span class="post-header__reading-time">{{ $readingTime }} min read</span>
+      {{- end }}
+    </div>
+
+    <h1 class="post-header__title">{{ .Title }}</h1>
+
+    {{- with .Description }}
+      <p class="post-header__desc">{{ . }}</p>
+    {{- end }}
+
+    <div class="post-header__byline">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">
+        {{ .Date.Format "January 2, 2006" }}
+      </time>
+      {{- if and $.Site.Params.showLastMod .Lastmod (ne (.Date.Format "2006-01-02") (.Lastmod.Format "2006-01-02")) }}
+        <span class="post-header__lastmod">Updated {{ .Lastmod.Format "January 2, 2006" }}</span>
+      {{- end }}
+    </div>
+
+    {{- with .Params.series }}
+      <div class="series-banner" style="margin-top:1.5rem;">
+        <p class="series-banner__label">Series</p>
+        <p class="series-banner__title">{{ . }}</p>
+      </div>
+    {{- end }}
+
+  </div>
+</header>
+
+<!-- Post body -->
+<div class="band band--white">
+  <div class="post-layout">
+
+    <!-- Table of contents -->
+    {{- if and $.Site.Params.showTableOfContents .Params.toc .TableOfContents }}
+      {{ partial "toc.html" . }}
+    {{- end }}
+
+    <!-- Article content -->
+    <div class="post-content">
+      {{ .Content }}
+    </div>
+
+  </div>
+</div>
+
+<!-- Post footer -->
+<footer class="post-footer band band--muted">
+  <div class="prose-container">
+
+    {{- with .Params.tags }}
+      <div class="post-tags">
+        {{- range . }}
+          <a href="{{ printf "/tags/%s/" (. | urlize) | relURL }}" class="tag-pill">{{ . }}</a>
+        {{- end }}
+      </div>
+    {{- end }}
+
+    <nav class="post-nav" aria-label="Post navigation">
+      {{- with .PrevInSection }}
+        <a href="{{ .RelPermalink }}" class="post-nav__prev">{{ .Title }}</a>
+      {{- else }}
+        <span></span>
+      {{- end }}
+      {{- with .NextInSection }}
+        <a href="{{ .RelPermalink }}" class="post-nav__next">{{ .Title }}</a>
+      {{- end }}
+    </nav>
+
+  </div>
+</footer>
+
+{{ end }}
+
+{{ define "scripts" }}
+<script src="{{ "/js/toc.js" | relURL }}"></script>
+{{ end }}

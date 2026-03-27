@@ -1,0 +1,124 @@
+.site-footer {
+  background: $color-footer-bg;
+  border-top: 1px solid $color-border;
+  padding-block: $space-12 $space-8;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: $space-8;
+    margin-bottom: $space-10;
+
+    @media (max-width: $bp-lg) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: $bp-sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__brand {
+    &-logo {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      margin-bottom: $space-3;
+
+      span:first-child {
+        font-family: $font-mono;
+        font-size: $text-lg;
+        font-weight: $font-bold;
+        color: $color-text-primary;
+      }
+
+      span:last-child {
+        font-family: $font-mono;
+        font-size: $text-xl;
+        font-weight: $font-bold;
+        color: $color-accent;
+      }
+    }
+
+    &-desc {
+      font-family: $font-sans;
+      font-size: $text-sm;
+      color: $color-text-secondary;
+      line-height: $leading-relaxed;
+      max-width: 30ch;
+    }
+  }
+
+  &__col-title {
+    font-family: $font-sans;
+    font-size: $text-xs;
+    font-weight: $font-semibold;
+    color: $color-text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: $space-4;
+  }
+
+  &__col-links {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__col-link {
+    font-family: $font-sans;
+    font-size: $text-sm;
+    color: $color-text-secondary;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: $space-8;
+    border-top: 1px solid $color-border;
+    gap: $space-4;
+    flex-wrap: wrap;
+
+    @media (max-width: $bp-sm) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__copy {
+    font-family: $font-sans;
+    font-size: $text-sm;
+    color: $color-text-muted;
+  }
+
+  &__social {
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+  }
+
+  &__social-link {
+    font-family: $font-sans;
+    font-size: $text-sm;
+    color: $color-text-muted;
+    transition: color $transition-fast;
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    &:hover {
+      color: $color-text-primary;
+    }
+  }
+}

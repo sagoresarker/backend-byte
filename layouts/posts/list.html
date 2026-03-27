@@ -1,0 +1,43 @@
+{{ define "main" }}
+<div class="band band--white">
+  <div class="site-container">
+
+    <header class="page-header">
+      <h1 class="page-header__title">{{ .Title }}</h1>
+      {{- with .Content }}
+        <div class="page-header__desc">{{ . }}</div>
+      {{- end }}
+    </header>
+
+    <!-- Category filter pills -->
+    <nav class="filter-bar" aria-label="Filter by category">
+      <button class="filter-pill is-active" data-filter="all">All</button>
+      {{- range .Site.Sections }}
+        {{- if eq .Section "posts" }}
+          {{- range .Sections }}
+            <button class="filter-pill" data-filter="{{ .Section }}">
+              {{ .Title }} <span style="opacity:0.6;font-weight:400;">({{ len .RegularPagesRecursive }})</span>
+            </button>
+          {{- end }}
+        {{- end }}
+      {{- end }}
+    </nav>
+
+    <!-- Posts -->
+    <ul class="post-list" id="post-list" aria-label="Blog posts">
+      {{- range .Paginator.Pages }}
+        <li class="post-list__item" data-category="{{ .Section }}">
+          {{ partial "post-list-card.html" . }}
+        </li>
+      {{- end }}
+    </ul>
+
+    {{ partial "pagination.html" . }}
+
+  </div>
+</div>
+{{ end }}
+
+{{ define "scripts" }}
+<script src="{{ "/js/filter.js" | relURL }}"></script>
+{{ end }}

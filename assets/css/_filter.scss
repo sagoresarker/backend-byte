@@ -1,0 +1,130 @@
+// Category filter pills bar (post listing page)
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  flex-wrap: wrap;
+  margin-bottom: $space-6;
+}
+
+.filter-pill {
+  font-family: $font-sans;
+  font-size: $text-sm;
+  font-weight: $font-medium;
+  color: $color-text-secondary;
+  background: $color-surface;
+  border: 1px solid $color-border;
+  padding: $space-2 $space-4;
+  border-radius: $radius-full;
+  cursor: pointer;
+  transition: background $transition-fast, border-color $transition-fast, color $transition-fast;
+
+  &:hover {
+    border-color: $color-accent;
+    color: $color-accent;
+  }
+
+  &--active,
+  &.is-active {
+    background: $color-accent;
+    border-color: $color-accent;
+    color: #FFFFFF;
+  }
+}
+
+// Tag filter (collapsible)
+.tag-filter {
+  margin-bottom: $space-8;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  overflow: hidden;
+
+  summary {
+    font-family: $font-sans;
+    font-size: $text-sm;
+    font-weight: $font-medium;
+    color: $color-text-secondary;
+    padding: $space-3 $space-4;
+    cursor: pointer;
+    background: $color-background;
+    list-style: none;
+
+    &::-webkit-details-marker { display: none; }
+
+    &::after {
+      content: " ▾";
+      font-size: $text-xs;
+    }
+
+    &:hover {
+      color: $color-text-primary;
+    }
+  }
+
+  &[open] summary::after {
+    content: " ▴";
+  }
+}
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+  padding: $space-4;
+  background: $color-surface;
+}
+
+// Search page
+.search-page {
+  padding-block: $space-8 $space-16;
+  max-width: 640px;
+
+  // Pagefind UI overrides via CSS custom properties
+  --pagefind-ui-scale: 1;
+  --pagefind-ui-primary: #{$color-accent};
+  --pagefind-ui-text: #{$color-text-primary};
+  --pagefind-ui-background: #{$color-surface};
+  --pagefind-ui-border: #{$color-border};
+  --pagefind-ui-tag: #{$color-background};
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: #{$radius-md};
+  --pagefind-ui-font: #{$font-sans};
+}
+
+// Pagination
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  padding-block: $space-10;
+
+  &__item {
+    font-family: $font-sans;
+    font-size: $text-sm;
+    font-weight: $font-medium;
+    color: $color-text-secondary;
+    padding: $space-2 $space-3;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    min-width: 36px;
+    text-align: center;
+    transition: border-color $transition-fast, color $transition-fast, background $transition-fast;
+
+    &:hover {
+      border-color: $color-accent;
+      color: $color-accent;
+    }
+
+    &--active {
+      background: $color-accent;
+      border-color: $color-accent;
+      color: #FFFFFF;
+    }
+
+    &--disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+  }
+}

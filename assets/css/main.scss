@@ -1,0 +1,30 @@
+// Import order matters — variables first, then reset, then components
+@import "variables";
+@import "reset";
+@import "layout";
+@import "header";
+@import "footer";
+@import "hero";
+@import "post-card";
+@import "post-single";
+@import "filter";
+@import "syntax";
+@import "responsive";
+
+// Base
+body {
+  font-family: $font-sans;
+  background-color: $color-background;
+  color: $color-text-primary;
+  font-size: $text-base;
+  line-height: $leading-normal;
+}
+
+// Links
+a {
+  color: $color-accent;
+
+  &:hover {
+    color: $color-accent-hover;
+  }
+}

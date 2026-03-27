@@ -1,0 +1,61 @@
+.hero {
+  padding-block: $space-20 $space-16;
+
+  &__content {
+    max-width: 640px;
+  }
+
+  &__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    font-family: $font-mono;
+    font-size: $text-sm;
+    color: $color-accent;
+    margin-bottom: $space-5;
+
+    &::before {
+      content: ">";
+      opacity: 0.6;
+    }
+  }
+
+  &__title {
+    font-family: $font-sans;
+    font-size: $text-5xl;
+    font-weight: $font-bold;
+    color: $color-text-primary;
+    line-height: $leading-tight;
+    letter-spacing: -0.04em;
+    margin-bottom: $space-6;
+
+    @media (max-width: $bp-md) {
+      font-size: $text-4xl;
+    }
+
+    @media (max-width: $bp-sm) {
+      font-size: $text-3xl;
+    }
+  }
+
+  &__subtitle {
+    font-family: $font-sans;
+    font-size: $text-xl;
+    color: $color-text-secondary;
+    line-height: $leading-relaxed;
+    max-width: 50ch;
+
+    @media (max-width: $bp-sm) {
+      font-size: $text-lg;
+    }
+  }
+}
+
+// Posts section on homepage
+.posts-section {
+  padding-block: $space-16;
+}
+
+.categories-section {
+  padding-block: $space-16;
+}

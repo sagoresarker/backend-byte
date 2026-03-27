@@ -1,0 +1,8 @@
+{{- if and .Params.toc .TableOfContents }}
+<div class="post-toc">
+  <div class="post-toc__inner">
+    <p class="post-toc__title">Contents</p>
+    {{ .TableOfContents }}
+  </div>
+</div>
+{{- end }}

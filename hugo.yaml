@@ -1,0 +1,85 @@
+baseURL: "https://sagoresarker.github.io/backend-byte/"
+languageCode: "en-US"
+title: "backend-byte"
+description: "Deep dives into Linux kernel, backend engineering, networking, and systems programming."
+
+buildDrafts: false
+buildFuture: false
+enableRobotsTXT: true
+enableGitInfo: true
+
+pagination:
+  pagerSize: 20
+
+permalinks:
+  posts: "/posts/:sections/:slug/"
+
+taxonomies:
+  tag: tags
+  series: series
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: false
+    extensions:
+      typographer: true
+      strikethrough: true
+      table: true
+      taskList: true
+  highlight:
+    style: "github"
+    lineNos: true
+    lineNumbersInTable: true
+    noClasses: false
+    tabWidth: 4
+  tableOfContents:
+    startLevel: 2
+    endLevel: 4
+    ordered: false
+
+sitemap:
+  changeFreq: "monthly"
+  priority: 0.5
+  filename: "sitemap.xml"
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+  section:
+    - HTML
+    - RSS
+
+menus:
+  main:
+    - name: "All Posts"
+      url: "/posts/"
+      weight: 10
+    - name: "Kernel"
+      url: "/posts/kernel/"
+      weight: 20
+    - name: "Backend"
+      url: "/posts/backend/"
+      weight: 30
+    - name: "Networking"
+      url: "/posts/networking/"
+      weight: 40
+    - name: "Systems"
+      url: "/posts/systems/"
+      weight: 50
+    - name: "DevTools"
+      url: "/posts/devtools/"
+      weight: 60
+
+params:
+  author: "Sagore Sarker"
+  github: "https://github.com/sagoresarker"
+
+  showReadingTime: true
+  showLastMod: true
+  showTableOfContents: true
+  showShareButtons: false
+  postsPerHomePage: 9
+  searchEnabled: true
