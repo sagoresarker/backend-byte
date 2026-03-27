@@ -1,31 +1,152 @@
-// Syntax highlighting language label
+// ============================================================
+// Chroma syntax highlighting — GitHub light theme
+// Generated via: hugo gen chromastyles --style=github
+// ============================================================
+
+/* Background */ .bg { background-color:#f6f8fa; }
+/* PreWrapper */ .chroma { background-color:#f6f8fa; color:#24292e; }
+/* Other */ .chroma .x {  }
+/* Error */ .chroma .err { color:#a61717;background-color:#e3d2d2 }
+/* CodeLine */ .chroma .cl {  }
+/* LineLink */ .chroma .lnlinks { outline:none;text-decoration:none;color:inherit }
+/* LineTableTD */ .chroma .lntd { vertical-align:top;padding:0;margin:0;border:0; }
+/* LineTable */ .chroma .lntable { border-spacing:0;padding:0;margin:0;border:0; }
+/* LineHighlight */ .chroma .hl { background-color:#fffbdd;display:block;width:100%; }
+/* LineNumbersTable */ .chroma .lnt { white-space:pre;user-select:none;margin-right:0;padding:0 0.75em 0 0.5em;color:#9ea7b3;border-right:1px solid #dde1e6; }
+/* LineNumbers */ .chroma .ln { white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em;color:#9ea7b3 }
+/* Line */ .chroma .line { display:flex; }
+/* Keyword */ .chroma .k { color:#d73a49;font-weight:bold }
+/* KeywordConstant */ .chroma .kc { color:#d73a49;font-weight:bold }
+/* KeywordDeclaration */ .chroma .kd { color:#d73a49;font-weight:bold }
+/* KeywordNamespace */ .chroma .kn { color:#d73a49;font-weight:bold }
+/* KeywordPseudo */ .chroma .kp { color:#d73a49;font-weight:bold }
+/* KeywordReserved */ .chroma .kr { color:#d73a49;font-weight:bold }
+/* KeywordType */ .chroma .kt { color:#005cc5 }
+/* NameAttribute */ .chroma .na { color:#6f42c1 }
+/* NameBuiltin */ .chroma .nb { color:#005cc5 }
+/* NameBuiltinPseudo */ .chroma .bp { color:#005cc5 }
+/* NameClass */ .chroma .nc { color:#6f42c1;font-weight:bold }
+/* NameConstant */ .chroma .no { color:#005cc5 }
+/* NameDecorator */ .chroma .nd { color:#6f42c1 }
+/* NameEntity */ .chroma .ni { color:#005cc5 }
+/* NameException */ .chroma .ne { color:#d73a49;font-weight:bold }
+/* NameFunction */ .chroma .nf { color:#6f42c1 }
+/* NameLabel */ .chroma .nl { color:#005cc5 }
+/* NameNamespace */ .chroma .nn { color:#24292e }
+/* NameTag */ .chroma .nt { color:#22863a }
+/* NameVariable */ .chroma .nv { color:#e36209 }
+/* NameVariableClass */ .chroma .vc { color:#e36209 }
+/* NameVariableGlobal */ .chroma .vg { color:#e36209 }
+/* NameVariableInstance */ .chroma .vi { color:#e36209 }
+/* LiteralString */ .chroma .s { color:#032f62 }
+/* LiteralStringAffix */ .chroma .sa { color:#032f62 }
+/* LiteralStringBacktick */ .chroma .sb { color:#032f62 }
+/* LiteralStringChar */ .chroma .sc { color:#032f62 }
+/* LiteralStringDelimiter */ .chroma .dl { color:#032f62 }
+/* LiteralStringDoc */ .chroma .sd { color:#032f62 }
+/* LiteralStringDouble */ .chroma .s2 { color:#032f62 }
+/* LiteralStringEscape */ .chroma .se { color:#032f62 }
+/* LiteralStringHeredoc */ .chroma .sh { color:#032f62 }
+/* LiteralStringInterpol */ .chroma .si { color:#032f62 }
+/* LiteralStringOther */ .chroma .sx { color:#032f62 }
+/* LiteralStringRegex */ .chroma .sr { color:#032f62 }
+/* LiteralStringSingle */ .chroma .s1 { color:#032f62 }
+/* LiteralStringSymbol */ .chroma .ss { color:#032f62 }
+/* LiteralNumber */ .chroma .m { color:#005cc5 }
+/* LiteralNumberBin */ .chroma .mb { color:#005cc5 }
+/* LiteralNumberFloat */ .chroma .mf { color:#005cc5 }
+/* LiteralNumberHex */ .chroma .mh { color:#005cc5 }
+/* LiteralNumberInteger */ .chroma .mi { color:#005cc5 }
+/* LiteralNumberIntegerLong */ .chroma .il { color:#005cc5 }
+/* LiteralNumberOct */ .chroma .mo { color:#005cc5 }
+/* Operator */ .chroma .o { color:#d73a49 }
+/* OperatorWord */ .chroma .ow { color:#d73a49;font-weight:bold }
+/* Comment */ .chroma .c { color:#6a737d;font-style:italic }
+/* CommentHashbang */ .chroma .ch { color:#6a737d;font-style:italic }
+/* CommentMultiline */ .chroma .cm { color:#6a737d;font-style:italic }
+/* CommentSingle */ .chroma .c1 { color:#6a737d;font-style:italic }
+/* CommentSpecial */ .chroma .cs { color:#6a737d;font-weight:bold;font-style:italic }
+/* CommentPreproc */ .chroma .cp { color:#6a737d;font-weight:bold }
+/* CommentPreprocFile */ .chroma .cpf { color:#6a737d;font-weight:bold }
+/* GenericDeleted */ .chroma .gd { color:#b31d28;background-color:#ffeef0 }
+/* GenericEmph */ .chroma .ge { font-style:italic }
+/* GenericError */ .chroma .gr { color:#b31d28 }
+/* GenericHeading */ .chroma .gh { color:#005cc5;font-weight:bold }
+/* GenericInserted */ .chroma .gi { color:#22863a;background-color:#f0fff4 }
+/* GenericOutput */ .chroma .go { color:#6a737d }
+/* GenericPrompt */ .chroma .gp { color:#6a737d;font-weight:bold }
+/* GenericStrong */ .chroma .gs { font-weight:bold }
+/* GenericSubheading */ .chroma .gu { color:#6a737d }
+/* GenericTraceback */ .chroma .gt { color:#b31d28 }
+/* TextWhitespace */ .chroma .w { color:#bbbbbb }
+
+// ============================================================
+// Code block container styling
+// ============================================================
+
 .highlight {
   position: relative;
+  margin-bottom: $space-6;
+  border-radius: $radius-lg;
+  overflow-x: auto;
+  border: 1px solid $color-border;
+  box-shadow: $shadow-sm;
+  font-size: $text-sm;
 
+  // Language label (set via Hugo's data-lang attribute or class)
   &[data-lang]::before {
     content: attr(data-lang);
     position: absolute;
     top: $space-3;
     right: $space-4;
     font-family: $font-mono;
-    font-size: $text-xs;
-    color: #64748B;
+    font-size: 10px;
+    color: #9ea7b3;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
     z-index: 1;
+    pointer-events: none;
+  }
+
+  pre {
+    overflow-x: visible;
+    white-space: pre;
+    padding: $space-5;
+    font-family: $font-mono;
+    line-height: 1.65;
+    margin: 0;
+
+    // line-number table
+    &.chroma {
+      padding: 0;
+    }
+  }
+
+  // Line number table layout
+  .lntable {
+    .lntd:first-child {
+      white-space: nowrap;
+
+      pre {
+        padding: $space-5 0 $space-5 $space-5;
+      }
+    }
+
+    .lntd:last-child {
+      pre {
+        padding: $space-5;
+      }
+    }
   }
 }
 
-// Chroma (Hugo's syntax highlighter) — github light theme overrides
-.chroma {
-  background: #f6f8fa !important;
-  color: #24292e;
-}
-
-.chroma .err { color: #b31d28; background-color: #ffeef0; }
-.chroma .hl  { background-color: #fffbdd; display: block; width: 100%; }
-
-// Inline code copy hint
-code {
-  position: relative;
+// Inline code (not inside .highlight)
+:not(pre) > code {
+  font-family: $font-mono;
+  font-size: 0.875em;
+  color: #d73a49;
+  background: #f6f8fa;
+  padding: 2px 6px;
+  border-radius: $radius-sm;
+  border: 1px solid $color-border;
 }

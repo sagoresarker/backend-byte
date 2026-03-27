@@ -2,7 +2,8 @@
 {{- if lt $readingTime 1 }}{{- $readingTime = 1 }}{{- end -}}
 <article class="post-card">
   <div class="post-card__meta">
-    {{- with .Section }}
+    {{- $cat := path.Base .CurrentSection.RelPermalink }}
+    {{- with $cat }}
       <a href="{{ printf "/posts/%s/" . | relURL }}" class="cat-badge cat-badge--{{ . }}">{{ . | title }}</a>
     {{- end }}
   </div>

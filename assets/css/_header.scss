@@ -4,14 +4,14 @@
   z-index: 100;
   width: 100%;
   background: $color-header-bg;
+  border-top: 3px solid $color-accent;       // accent stripe at very top
   border-bottom: 1px solid $color-header-border;
-  height: $header-height;
 
   &__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 100%;
+    padding-block: $space-4;                  // 16px top/bottom — no more flush
     gap: $space-6;
   }
 

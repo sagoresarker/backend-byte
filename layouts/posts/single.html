@@ -7,7 +7,8 @@
   <div class="prose-container">
 
     <div class="post-header__meta">
-      {{- with .Section }}
+      {{- $cat := path.Base .CurrentSection.RelPermalink }}
+      {{- with $cat }}
         <a href="{{ printf "/posts/%s/" . | relURL }}" class="cat-badge cat-badge--{{ . }}">{{ . | title }}</a>
       {{- end }}
       {{- if $.Site.Params.showReadingTime }}

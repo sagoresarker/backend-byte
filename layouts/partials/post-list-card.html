@@ -3,7 +3,8 @@
 <article class="post-list-card">
   <div class="post-list-card__body">
     <div class="post-list-card__meta">
-      {{- with .Section }}
+      {{- $cat := path.Base .CurrentSection.RelPermalink }}
+      {{- with $cat }}
         <a href="{{ printf "/posts/%s/" . | relURL }}" class="cat-badge cat-badge--{{ . }}">{{ . | title }}</a>
       {{- end }}
     </div>

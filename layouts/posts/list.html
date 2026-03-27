@@ -1,5 +1,5 @@
 {{ define "main" }}
-<div class="band band--white">
+<div class="band band--white" style="padding-bottom: 4rem;">
   <div class="site-container">
 
     <header class="page-header">
@@ -12,27 +12,26 @@
     <!-- Category filter pills -->
     <nav class="filter-bar" aria-label="Filter by category">
       <button class="filter-pill is-active" data-filter="all">All</button>
-      {{- range .Site.Sections }}
-        {{- if eq .Section "posts" }}
-          {{- range .Sections }}
-            <button class="filter-pill" data-filter="{{ .Section }}">
-              {{ .Title }} <span style="opacity:0.6;font-weight:400;">({{ len .RegularPagesRecursive }})</span>
-            </button>
-          {{- end }}
-        {{- end }}
+      {{- range .Sections }}
+        {{- $slug := path.Base .RelPermalink }}
+        <button class="filter-pill" data-filter="{{ $slug }}">
+          {{ .Title }} <span style="opacity:0.6;font-weight:400;">({{ len .RegularPagesRecursive }})</span>
+        </button>
       {{- end }}
     </nav>
 
     <!-- Posts -->
+    {{- $pages := .RegularPagesRecursive.ByDate.Reverse }}
+    {{- $paginator := .Paginate $pages }}
     <ul class="post-list" id="post-list" aria-label="Blog posts">
-      {{- range .Paginator.Pages }}
-        <li class="post-list__item" data-category="{{ .Section }}">
+      {{- range $paginator.Pages }}
+        <li class="post-list__item" data-category="{{ path.Base .CurrentSection.RelPermalink }}">
           {{ partial "post-list-card.html" . }}
         </li>
       {{- end }}
     </ul>
 
-    {{ partial "pagination.html" . }}
+    {{- template "_internal/pagination.html" . }}
 
   </div>
 </div>

@@ -51,7 +51,7 @@
     <!-- Bottom bar -->
     <div class="site-footer__bottom">
       <p class="site-footer__copy">
-        &copy; {{ now.Year }} {{ .Site.Params.author | default .Site.Title }}. Built with Hugo.
+        &copy; {{ now.Year }} <a href="https://sagoresarker.me" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">{{ .Site.Params.author | default .Site.Title }}</a>. Built with Hugo.
       </p>
       <div class="site-footer__social">
         {{- with .Site.Params.github }}

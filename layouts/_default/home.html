@@ -36,15 +36,12 @@
     </div>
 
     <div class="category-grid">
-      {{- range .Site.Sections }}
-        {{- if eq .Section "posts" }}
-          {{- range .Sections }}
-            <a href="{{ .RelPermalink }}" class="category-card">
-              <span class="category-card__name">{{ .Title }}</span>
-              <span class="category-card__count">{{ len .RegularPagesRecursive }} posts</span>
-            </a>
-          {{- end }}
-        {{- end }}
+      {{- $postsSection := .Site.GetPage "/posts" }}
+      {{- range $postsSection.Sections }}
+        <a href="{{ .RelPermalink }}" class="category-card">
+          <span class="category-card__name">{{ .Title }}</span>
+          <span class="category-card__count">{{ len .RegularPagesRecursive }} posts</span>
+        </a>
       {{- end }}
     </div>
   </div>

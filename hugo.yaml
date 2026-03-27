@@ -11,8 +11,6 @@ enableGitInfo: true
 pagination:
   pagerSize: 20
 
-permalinks:
-  posts: "/posts/:sections/:slug/"
 
 taxonomies:
   tag: tags
@@ -47,7 +45,6 @@ outputs:
   home:
     - HTML
     - RSS
-    - JSON
   section:
     - HTML
     - RSS
